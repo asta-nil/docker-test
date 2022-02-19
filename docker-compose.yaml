@@ -3,9 +3,10 @@ version: '2'
 services:
   wordpress:
     image: wordpress
-    ports: 
-      - "8000:80"
+    ports:
+      - "8080:80"
     environment:
+      WORDPRESS_DB_USER: user
       WORDPRESS_DB_PASSWORD: pass
       WORDPRESS_DB_NAME: db
     volumes:
@@ -16,6 +17,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
     volumes:
-      - ./astanil.com.sql.gzip:/docker-entrypoint-initdb.d/backup.sql.gzip
-  
+      - ./mysql/dbd.sql:/docker-entrypoint-initdb.d/backup.sql  
