@@ -1,16 +1,6 @@
 version: '2'
  
 services:
-  wordpress:
-    image: wordpress
-    ports:
-      - "8080:80"
-    environment:
-      WORDPRESS_DB_USER: user
-      WORDPRESS_DB_PASSWORD: pass
-      WORDPRESS_DB_NAME: db
-    volumes:
-      - ./astanil:/var/www/html
  
   mysql:
     image: mysql
@@ -21,3 +11,16 @@ services:
       MYSQL_PASSWORD: pass
     volumes:
       - ./mysql/dbd.sql:/docker-entrypoint-initdb.d/backup.sql  
+      
+  wordpress:
+    depends_on:
+      - "mysql"
+    image: wordpress
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_USER: user
+      WORDPRESS_DB_PASSWORD: pass
+      WORDPRESS_DB_NAME: db
+    volumes:
+      - ./astanil:/var/www/html
