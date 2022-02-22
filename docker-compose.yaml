@@ -13,7 +13,7 @@ services:
       - ./mysql/dbd.sql:/docker-entrypoint-initdb.d/backup.sql  
       
   wordpress:
-    depends_on:
+    depencies:
       - "mysql"
     image: wordpress
     ports:
