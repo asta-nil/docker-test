@@ -1,4 +1,4 @@
-# genesis-case
+# case task
 ## wordpress on docker
 You need to run command:
   ```sh
